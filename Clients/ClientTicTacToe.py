@@ -5,7 +5,6 @@ import socket
 import json
 import os
 from TicTacToe.Grid import Grid
-from TicTacToe.Tic_tac_toe_game import start_Tic_Tac_Toe_game
 
 #MOVES
 LEFT = "4"
@@ -28,7 +27,6 @@ class ClientTicTacToe:
         self.client_socket = client_socket
 
     def start_client(self):
-        print("waiting for server connection...")
 
         init = self.client_socket.recv(1024)
         print(init.decode())
@@ -89,3 +87,4 @@ class ClientTicTacToe:
 
             except:
                 print('bad json')
+                break

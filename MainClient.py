@@ -7,7 +7,7 @@ import os
 from TicTacToe.Tic_tac_toe_game import start_Tic_Tac_Toe_game
 from GuessNumber.GuessNumber import start_guess_the_number
 from Clients.ClientTicTacToe import ClientTicTacToe
-from Clients.ClientGuessNumber import ClientGuessNumber
+#from Clients.ClientGuessNumber import ClientGuessNumber
 
 TIC_TAC_TOE = 0
 GUESS_A_NUMBER = 1
@@ -33,22 +33,23 @@ class MainClient:
         #insert game mode
         while True:
             game_mode = str(input())
-            if int(game_mode) in [TIC_TAC_TOE,GUESS_A_NUMBER] :
+            if  game_mode  in [str(TIC_TAC_TOE),str(GUESS_A_NUMBER)] :
                 self.client_socket.send(game_mode.encode())
+                waiting_message = self.client_socket.recv(1024)
+                print(waiting_message.decode())
                 break
             else :
                 print("you entered a wrong choice\nPlease choose a game :\n0 for Tic Tac Toe \n1 for Guess a number \n")
 
-        waiting_message = self.client_socket.recv(1024)
-        print(waiting_message.decode())
 
 
-        if(game_mode == TIC_TAC_TOE):
+
+        if int(game_mode) == TIC_TAC_TOE :
             client_tic_tac_toe = ClientTicTacToe()
             client_tic_tac_toe.set_client_socket(self.client_socket)
             client_tic_tac_toe.start_client()
         else :
-            print("ciao")
+            print("Bye bye")
 
 
 

@@ -49,6 +49,7 @@ class MainServer:
             if len(self.players) >= 1:
                 player.set_symbol("\033[38;5;14mO\033[0m")
 
+                message = "At the moment the server is hosting a "
                 game_message = ""
 
                 if self.game_mode == TIC_TAC_TOE:
@@ -56,10 +57,12 @@ class MainServer:
                 else :
                     game_message = "guess a number game "
 
-                player.get_connection().send(
-                    ("At the moment the server is hosting a " + game_message +"\nDo you want to join "+ self.players[PLAYER_1].get_name()+" ? y/n").encode())
 
-                if player.get_connection().recv(1024).decode() == "y":
+
+                player.get_connection().send(
+                    (message+game_message +"\nIf you want to join"+ self.players[PLAYER_1].get_name()+" insert "+str(self.game_mode)).encode())
+
+                if int(player.get_connection().recv(1024).decode()) == self.game_mode:
                     self.players.append(player)
 
 
