@@ -60,7 +60,7 @@ class MainServer:
 
 
                 player.get_connection().send(
-                    (message+game_message +"\nIf you want to join"+ self.players[PLAYER_1].get_name()+" insert "+str(self.game_mode)).encode())
+                    (message+game_message +"\nIf you want to join "+ self.players[PLAYER_1].get_name()+" insert "+str(self.game_mode)).encode())
 
                 if int(player.get_connection().recv(1024).decode()) == self.game_mode:
                     self.players.append(player)

@@ -70,30 +70,39 @@ print("\n")
 choice = input("Please, choose one mode ( s or m ) ---->    ")
 print("\n")
 os.system("clear")
-if choice == "s":
-    print("************************************************")
-    print("*                                              *")
-    print("*               Play tic tac toe      --- t    *")
-    print("*                                              *")
-    print("*               Play guess a number   --- g    *")
-    print("*                                              *")
-    print("************************************************")
+while True:
+    if choice == "s":
+        print("************************************************")
+        print("*                                              *")
+        print("*               Play tic tac toe      --- t    *")
+        print("*                                              *")
+        print("*               Play guess a number   --- g    *")
+        print("*                                              *")
+        print("************************************************")
 
-    while True:
+        while True:
 
-        choice = input("Please, choose one game ( t or g ) ---->    ")
-        print("\n")
+            choice = input("Please, choose one game ( t or g ) ---->    ")
+            print("\n")
 
-        if choice == "t":
-            start_Tic_Tac_Toe_game()
-            break
-        elif choice == "g":
-            start_guess_the_number()
-            break
-        else :
-            print("You entered wrong choice\n")
+            if choice == "t":
+                start_Tic_Tac_Toe_game()
+                break
+            elif choice == "g":
+                start_guess_the_number()
+                break
+            else :
+                print("You entered wrong choice\n")
 
-else:
-    HOST = str(input("please insert ip address of the game server\n"))                     # HOST = "10.205.12.240"
-    PORT = int(input("please insert Port number of the game server\n"))                    # PORT = 9999
-    MainClient().start_client()
+        break
+
+    elif choice == "m":
+        HOST = str(input("please insert ip address of the game server\n"))                     # HOST = "10.205.12.240"
+        PORT = int(input("please insert Port number of the game server\n"))                    # PORT = 9999
+        MainClient().start_client()
+
+        break
+
+    else:
+        print("You entered wrong choice\n")
+

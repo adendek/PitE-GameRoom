@@ -28,25 +28,15 @@ class ClientTicTacToe:
 
     def start_client(self):
 
-        init = self.client_socket.recv(1024)
-        print(init.decode())
-        self.client_socket.send(str(input()).encode())
-
-        data = self.client_socket.recv(1024)
-        print(data.decode())
-
-        self.client_socket.send(str(input()).encode())
-
-        data = self.client_socket.recv(1024)
-        print(data.decode())
-
         welcome_message = self.client_socket.recv(1024)
         print(welcome_message.decode())
 
         is_game_ended = False
 
         while not is_game_ended:
+
             response = self.client_socket.recv(1024)
+
 
             try:
                 json_object = json.loads(response.decode())
@@ -79,7 +69,7 @@ class ClientTicTacToe:
                     print("\n"+message)
                     is_game_ended = True
 
-                else:
+                elif type_message == 0:
                     os.system("clear")
                     self.grid.draw_grid(grid_list)
                     message = json_object.get("message")
