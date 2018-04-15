@@ -3,8 +3,8 @@
 
 import time
 
-from Grid import Grid
-from Computer import Computer
+from TicTacToe.Grid import Grid
+from TicTacToe.Computer import Computer
 from Player import Player
 
 grid_obj = Grid()
@@ -12,7 +12,7 @@ computer = Computer()
 player = Player()
 
 
-def start_game():
+def start_Tic_Tac_Toe_game():
 
     run = 0
     player.insert_player_name()
@@ -71,4 +71,4 @@ def start_game():
 
 
 if __name__ == '__main__':
-    start_game()
+    start_Tic_Tac_Toe_game()

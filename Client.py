@@ -4,8 +4,8 @@
 import socket
 import json
 import os
-from Grid import Grid
-from Tic_tac_toe_game import start_game
+from TicTacToe.Grid import Grid
+from TicTacToe.Tic_tac_toe_game import start_Tic_Tac_Toe_game
 
 #MOVES 
 LEFT = "4"
@@ -98,7 +98,7 @@ print("\n")
 choice = input("Please, choose one mode ( s or m ) ---->    ")
 print("\n")
 if choice == "s":
-    start_game()
+    start_Tic_Tac_Toe_game()
 else:
     HOST = str(input("please insert ip address of the game server\n"))                     # HOST = "10.205.12.240"
     PORT = int(input("please insert Port number of the game server\n"))                    # PORT = 9999

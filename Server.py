@@ -3,7 +3,7 @@
 
 import socket  # Import socket module
 from Player import Player
-from Grid import Grid
+from TicTacToe.Grid import Grid
 import json
 import time
 
