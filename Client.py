@@ -30,9 +30,14 @@ class Client:
 
         init = self.client_socket.recv(1024)                    
         print(init.decode())
-        self.client_socket.send(str(input()).encode())          
+        self.client_socket.send(str(input()).encode())
 
         data = self.client_socket.recv(1024)                    
+        print(data.decode())
+
+        self.client_socket.send(str(input()).encode())
+
+        data = self.client_socket.recv(1024)
         print(data.decode())
 
         welcome_message = self.client_socket.recv(1024)         
