@@ -1,4 +1,4 @@
-#Client 
+#ClientTicTacToe
 #Authors Mario Carricato & Marco Amato
 
 import socket
@@ -7,7 +7,7 @@ import os
 from TicTacToe.Grid import Grid
 from TicTacToe.Tic_tac_toe_game import start_Tic_Tac_Toe_game
 
-#MOVES 
+#MOVES
 LEFT = "4"
 CENTER = "5"
 RIGHT = "6"
@@ -19,20 +19,22 @@ DOWN_LEFT_CORNER = "1"
 DOWN_RIGHT_CORNER = "3"
 
 
-class Client:
+class ClientTicTacToe:
     def __init__(self):
-        self.client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  
-        self.client_socket.connect((HOST, PORT))                                
+        self.client_socket = None
         self.grid = Grid()
+
+    def set_client_socket(self,client_socket):
+        self.client_socket = client_socket
 
     def start_client(self):
         print("waiting for server connection...")
 
-        init = self.client_socket.recv(1024)                    
+        init = self.client_socket.recv(1024)
         print(init.decode())
         self.client_socket.send(str(input()).encode())
 
-        data = self.client_socket.recv(1024)                    
+        data = self.client_socket.recv(1024)
         print(data.decode())
 
         self.client_socket.send(str(input()).encode())
@@ -40,20 +42,20 @@ class Client:
         data = self.client_socket.recv(1024)
         print(data.decode())
 
-        welcome_message = self.client_socket.recv(1024)         
+        welcome_message = self.client_socket.recv(1024)
         print(welcome_message.decode())
 
         is_game_ended = False
 
-        while not is_game_ended:                                
-            response = self.client_socket.recv(1024)            
+        while not is_game_ended:
+            response = self.client_socket.recv(1024)
 
             try:
                 json_object = json.loads(response.decode())
-                type_message = json_object.get("type")          
+                type_message = json_object.get("type")
                 grid_list = json_object.get("grid")
 
-                if type_message == 1:                           
+                if type_message == 1:
                     valid_input = False
                     os.system("clear")
                     self.grid.draw_grid(grid_list)
@@ -72,14 +74,14 @@ class Client:
                             print("\nyou have inserted invalid input")
                             print("Try Again")
 
-                elif type_message == 2:                           
+                elif type_message == 2:
                     os.system("clear")
                     self.grid.draw_grid(grid_list)
                     message = json_object.get("message")
                     print("\n"+message)
                     is_game_ended = True
 
-                else:                                              
+                else:
                     os.system("clear")
                     self.grid.draw_grid(grid_list)
                     message = json_object.get("message")
@@ -87,24 +89,3 @@ class Client:
 
             except:
                 print('bad json')
-
-
-print("\n")
-print("************************************************")
-print("*****           Tic Tac Toe Game          ******")
-print("************************************************")
-print("*                                              *")
-print("*               Play single player  --- s      *")
-print("*                                              *")
-print("*               Play multi player   --- m      *")
-print("*                                              *")
-print("************************************************")
-print("\n")
-choice = input("Please, choose one mode ( s or m ) ---->    ")
-print("\n")
-if choice == "s":
-    start_Tic_Tac_Toe_game()
-else:
-    HOST = str(input("please insert ip address of the game server\n"))                     # HOST = "10.205.12.240"
-    PORT = int(input("please insert Port number of the game server\n"))                    # PORT = 9999
-    Client().start_client()

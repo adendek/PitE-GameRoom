@@ -4,13 +4,8 @@
 import random
 import time
 import os
-from Grid import Grid
-from Computer import Computer
 from Player import Player
 
-
-grid_obj = Grid()
-computer = Computer()
 player = Player()
 
 
