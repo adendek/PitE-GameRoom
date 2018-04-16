@@ -33,7 +33,7 @@ class MainClient:
         #insert game mode
         while True:
             game_mode = str(input())
-            if  game_mode  in [str(TIC_TAC_TOE),str(GUESS_A_NUMBER)] :
+            if game_mode in [str(TIC_TAC_TOE), str(GUESS_A_NUMBER)]:
                 self.client_socket.send(game_mode.encode())
                 waiting_message = self.client_socket.recv(1024)
                 print(waiting_message.decode())

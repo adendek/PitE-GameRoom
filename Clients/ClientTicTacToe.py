@@ -28,24 +28,14 @@ class ClientTicTacToe:
 
     def start_client(self):
 
-        init = self.client_socket.recv(1024)
-        print(init.decode())
-        self.client_socket.send(str(input()).encode())
-
-        data = self.client_socket.recv(1024)
-        print(data.decode())
-
-        self.client_socket.send(str(input()).encode())
-
-        data = self.client_socket.recv(1024)
-        print(data.decode())
-
         welcome_message = self.client_socket.recv(1024)
         print(welcome_message.decode())
 
         is_game_ended = False
 
+
         while not is_game_ended:
+
             response = self.client_socket.recv(1024)
 
             try:
@@ -54,6 +44,7 @@ class ClientTicTacToe:
                 grid_list = json_object.get("grid")
 
                 if type_message == 1:
+
                     valid_input = False
                     os.system("clear")
                     self.grid.draw_grid(grid_list)
@@ -73,6 +64,7 @@ class ClientTicTacToe:
                             print("Try Again")
 
                 elif type_message == 2:
+
                     os.system("clear")
                     self.grid.draw_grid(grid_list)
                     message = json_object.get("message")
@@ -80,6 +72,7 @@ class ClientTicTacToe:
                     is_game_ended = True
 
                 else:
+
                     os.system("clear")
                     self.grid.draw_grid(grid_list)
                     message = json_object.get("message")

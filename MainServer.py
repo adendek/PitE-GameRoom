@@ -6,8 +6,9 @@ from Player import Player
 from Servers.ServerTicTacToe import ServerTicTacToe
 #from Servers.ServerGuessNumber import ServerGuessNumber
 import json
+import time
 
-PORT = 9999  # Reserve a port for your service.
+PORT = 9999 # Reserve a port for your service.
 HOST = socket.gethostbyname(socket.gethostname())  # Get local ip name
 
 #CODES for 2 servers
@@ -60,11 +61,14 @@ class MainServer:
 
 
                 player.get_connection().send(
-                    (message+game_message +"\nIf you want to join"+ self.players[PLAYER_1].get_name()+" insert "+str(self.game_mode)).encode())
+                    (message+game_message +"\nIf you want to join "+ self.players[PLAYER_1].get_name()+" insert "+str(self.game_mode)).encode())
 
-                if int(player.get_connection().recv(1024).decode()) == self.game_mode:
+                game_mode_choice = int(player.get_connection().recv(1024).decode())
+
+                if game_mode_choice == self.game_mode:
+                    player.get_connection().send(("Prepare for the match " + str(player.get_name())).encode())
                     self.players.append(player)
-
+                    time.sleep(2)
 
             else:
                 player.set_symbol("\033[38;5;11mX\033[0m")
