@@ -69,6 +69,8 @@ class MainServer:
                     player.get_connection().send(("Prepare for the match " + str(player.get_name())).encode())
                     self.players.append(player)
                     time.sleep(2)
+                else :
+                    player.get_connection().close()
 
             else:
                 player.set_symbol("\033[38;5;11mX\033[0m")

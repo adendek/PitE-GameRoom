@@ -68,11 +68,15 @@ print("*                                              *")
 print("*               Play multi player   --- m      *")
 print("*                                              *")
 print("************************************************")
-print("\n")
-choice = input("Please, choose one mode ( s or m ) ---->    ")
-print("\n")
-os.system("clear")
+
 while True:
+
+    print("\n")
+    choice = input("Please, choose one mode ( s or m ) ---->    ")
+    print("\n")
+    os.system("clear")
+
+
     if choice == "s":
         print("************************************************")
         print("*                                              *")
@@ -84,7 +88,7 @@ while True:
 
         while True:
 
-            choice = input("Please, choose one game ( t or g ) ---->    ")
+            choice = input("\nPlease, choose one game ( t or g ) ---->    ")
             print("\n")
 
             if choice == "t":

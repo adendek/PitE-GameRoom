@@ -31,6 +31,8 @@ class ClientGuessNumber:
 
                 if type_message == 0:
 
+                       is_choice_wrong = True
+                       message = json_object.get("message")
                        while is_choice_wrong:
 
                         print("\n")
@@ -64,5 +66,5 @@ class ClientGuessNumber:
                     is_game_ended = True
 
             except:
-                print('bad json')
+                print('Lost Connection..')
                 break

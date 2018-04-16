@@ -80,5 +80,5 @@ class ClientTicTacToe:
                     print("\n" + message)
 
             except:
-                print('bad json')
+                print('Lost Connection..')
                 break
