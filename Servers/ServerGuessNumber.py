@@ -75,6 +75,7 @@ class ServerGuessNumber:
 
         time.sleep(2)
 
+
         while not is_game_ended and (self.number_of_attempts[PLAYER_1] + self.number_of_attempts[PLAYER_2]) < 16 :
 
             print(self.number_to_guess)
