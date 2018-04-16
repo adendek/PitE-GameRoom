@@ -20,7 +20,6 @@ PLAYER_1 = 0
 PLAYER_2 = 1
 
 
-
 class MainServer:
     def __init__(self):
         self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -28,7 +27,6 @@ class MainServer:
         self.server_socket.listen(5)
         self.players = []
         self.game_mode = 0
-
 
     def start_server(self):
 
@@ -58,8 +56,6 @@ class MainServer:
                 else :
                     game_message = "guess a number game "
 
-
-
                 player.get_connection().send(
                     (message+game_message +"\nIf you want to join "+ self.players[PLAYER_1].get_name()+" insert "+str(self.game_mode)).encode())
 
@@ -84,7 +80,6 @@ class MainServer:
                     ("Prepare for the match " + str(player.get_name()) + "\nWaiting for opponents").encode())
 
                 self.players.append(player)
-
 
             if len(self.players) == 2:
                 if self.game_mode == TIC_TAC_TOE :

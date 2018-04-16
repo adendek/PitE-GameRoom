@@ -18,7 +18,6 @@ DOWN_LEFT_CORNER = "1"
 DOWN_RIGHT_CORNER = "3"
 
 
-
 class ClientTicTacToe:
     def __init__(self):
         self.client_socket = None
@@ -33,7 +32,6 @@ class ClientTicTacToe:
         print(welcome_message.decode())
 
         is_game_ended = False
-
 
         while not is_game_ended:
 

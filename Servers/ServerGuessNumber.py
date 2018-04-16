@@ -23,7 +23,7 @@ class ServerGuessNumber:
         self.winner_number = 0
         self.number_to_guess = generate_win_number()
         self.draw = False
-        self.number_of_attempts = [0,0]
+        self.number_of_attempts = [0, 0]
 
     def set_players(self, players):
         self.players = players
@@ -44,11 +44,9 @@ class ServerGuessNumber:
         else :
             message = request_message
 
-        self.send_request(message,player,CHECK_ATTEMPTS)
+        self.send_request(message, player, CHECK_ATTEMPTS)
 
-
-    def main_logic(self,number,player):
-
+    def main_logic(self, number, player):
         if number > self.number_to_guess:
             self.send_request(choice_number_to_hight(number), player, RESPONSE)
             return False
@@ -79,9 +77,7 @@ class ServerGuessNumber:
 
         while not is_game_ended and (self.number_of_attempts[PLAYER_1] + self.number_of_attempts[PLAYER_2]) < 16 :
 
-
             print(self.number_to_guess)
-
 
             if self.number_of_attempts[PLAYER_1] <= 8  :
 
@@ -93,8 +89,6 @@ class ServerGuessNumber:
 
                 self.number_of_attempts[PLAYER_1] += 1
 
-
-
             if not is_game_ended and self.number_of_attempts[PLAYER_2] <= 8 :
 
                 self.check_attempts(self.number_of_attempts[PLAYER_2], PLAYER_2)
@@ -105,13 +99,7 @@ class ServerGuessNumber:
 
                 self.number_of_attempts[PLAYER_2] += 1
 
-
-
-
         self.draw = not is_game_ended
-
-
-
 
         if not self.draw:
 

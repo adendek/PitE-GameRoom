@@ -12,6 +12,7 @@ from Clients.ClientGuessNumber import ClientGuessNumber
 TIC_TAC_TOE = 0
 GUESS_A_NUMBER = 1
 
+
 class MainClient:
     def __init__(self):
         self.client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  
@@ -41,10 +42,7 @@ class MainClient:
             else :
                 print("you entered a wrong choice\nPlease choose a game :\n0 for Tic Tac Toe \n1 for Guess a number \n")
 
-
-
-
-        if int(game_mode) == TIC_TAC_TOE :
+        if int(game_mode) == TIC_TAC_TOE:
             client_tic_tac_toe = ClientTicTacToe()
             client_tic_tac_toe.set_client_socket(self.client_socket)
             client_tic_tac_toe.start_client()
@@ -52,10 +50,6 @@ class MainClient:
             client_guess_number = ClientGuessNumber()
             client_guess_number.set_client_socket(self.client_socket)
             client_guess_number.start_client()
-
-
-
-
 
 
 print("\n")
@@ -75,7 +69,6 @@ while True:
     choice = input("Please, choose one mode ( s or m ) ---->    ")
     print("\n")
     os.system("clear")
-
 
     if choice == "s":
         print("************************************************")
@@ -111,4 +104,3 @@ while True:
 
     else:
         print("You entered wrong choice\n")
-

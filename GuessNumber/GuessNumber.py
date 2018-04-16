@@ -47,17 +47,8 @@ def you_lose_match(name):
     return you_lose
 
 
-
-
-
-
-
-
-
-
-
-def check_attempts(number_of_attempts,name):
-    if number_of_attempts > 4 and number_of_attempts < 7:
+def check_attempts(number_of_attempts, name):
+    if number_of_attempts > 4 and 4 < number_of_attempts < 7:
         print(name + " you still have few chance ...")
     if number_of_attempts == 7:
         print(name + " this your last chance... Good luck Man ")
@@ -109,7 +100,6 @@ def start_guess_the_number():
 
         win = game_logic(win, name, number_to_guess)
         number_of_attempts += 1
-
 
     if not win:
         print(you_lose_match(name))
