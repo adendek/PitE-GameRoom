@@ -18,6 +18,7 @@ DOWN_LEFT_CORNER = "1"
 DOWN_RIGHT_CORNER = "3"
 
 
+
 class ClientTicTacToe:
     def __init__(self):
         self.client_socket = None
