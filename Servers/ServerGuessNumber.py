@@ -73,7 +73,7 @@ class ServerGuessNumber:
         self.players[PLAYER_1].get_connection().send(welcome_message.encode())
         self.players[PLAYER_2].get_connection().send(welcome_message.encode())
 
-        time.sleep(4)
+        time.sleep(2)
 
         while not is_game_ended and (self.number_of_attempts[PLAYER_1] + self.number_of_attempts[PLAYER_2]) < 16 :
 
