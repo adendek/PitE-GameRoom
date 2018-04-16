@@ -1,5 +1,5 @@
-#Tic_tac_toe_game
-#Authors Mario Carricato & Marco Amato
+# Tic_tac_toe_game
+# Authors Mario Carricato & Marco Amato
 
 import random
 import time
@@ -18,13 +18,8 @@ def choice_number_to_low(number):
     number = str(number)
     col_number = "\033[38;5;14m" + number + "\033[0m"
     os.system("clear")
-    print("\n")
-    print (" Oh NO... number : "+ col_number +" is too LOW \n")
-    print("\n\
-    ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄\n\
-    ████▌▄▌▄▐▐▌█████\n\
-    ████▌▄▌▄▐▐▌▀████\n\
-    ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀\n")
+    number_to_low = "\n"+"  Oh NO... number : "+ col_number +" is too LOW \n" +"▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄\n████▌▄▌▄▐▐▌█████\n████▌▄▌▄▐▐▌▀████\n▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀\n"
+    return number_to_low
 
 
 def choice_number_to_hight(number):
@@ -32,12 +27,8 @@ def choice_number_to_hight(number):
     col_number = "\033[38;5;14m"+number+"\033[0m"
     os.system("clear")
     print("\n")
-    print (" Oh NO... number : " +col_number +" is too HIGh\n")
-    print("\n\
-        ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄\n\
-        ████▌▄▌▄▐▐▌█████\n\
-        ████▌▄▌▄▐▐▌▀████\n\
-        ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀\n")
+    number_to_high = "\n" + "  Oh NO... number : " + col_number + " is too HIGH \n" + "▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄\n████▌▄▌▄▐▐▌█████\n████▌▄▌▄▐▐▌▀████\n▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀\n"
+    return number_to_high
 
 
 def choice_number_win(number, name):
@@ -45,73 +36,55 @@ def choice_number_win(number, name):
     col_number = "\033[38;5;14m"+number+"\033[0m"
     col_name = "\033[38;5;11m"+name+"\033[0m"
     os.system("clear")
-    print("\n")
-    print (col_name + " with number : "+col_number +" YOU WIN \n")
-    print("\n\
-           ________$$$$\n\
-                ___$$__$\n\
-            _______$___$$\n\
-            _______$___$$\n\
-            _______$$___$$\n\
-            ________$____$$\n\
-            ________$$____$$$\n\
-            _________$$_____$$\n\
-            _________$$______$$\n\
-            __________$_______$$\n\
-            ____$$$$$$$________$$\n\
-            __$$$_______________$$$$$$\n\
-            _$$____$$$$____________$$$\n\
-            _$___$$$__$$$____________$$\n\
-            _$$________$$$____________$\n\
-            __$$____$$$$$$____________$\n\
-            __$$$$$$$____$$___________$\n\
-            __$$_______$$$$___________$\n\
-            ___$$$$$$$$$__$$_________$$\n\
-            ____$________$$$$_____$$$$\n\
-            ____$$____$$$$$$____$$$$$$\n\
-            _____$$$$$$____$$__$$\n\
-            _______$_____$$$_$$$\n\
-            ________$$$$$$$$$$\n")
+    you_win = "\n" + col_name + " with number : "+col_number +" YOU WIN \n" + "\n________$$$$\n    ___$$__$\n_______$___$$\n_______$___$$\n_______$$___$$\n________$____$$\n________$$____$$$\n_________$$_____$$\n_________$$______$$\n__________$_______$$\n____$$$$$$$________$$\n__$$$_______________$$$$$$\n_$$____$$$$____________$$$\n_$___$$$__$$$____________$$\n_$$________$$$____________$\n__$$____$$$$$$____________$\n__$$$$$$$____$$___________$\n__$$_______$$$$___________$\n___$$$$$$$$$__$$_________$$\n____$________$$$$_____$$$$\n____$$____$$$$$$____$$$$$$\n_____$$$$$$____$$__$$\n_______$_____$$$_$$$\n________$$$$$$$$$$\n"
+    return you_win
 
 
 def you_lose_match(name):
-    col_name = "\033[38;5;11m" + name + "\033[0m"
+    colored_name = "\033[38;5;11m" + name + "\033[0m"
     os.system("clear")
-    print("\n")
-    print (col_name + " YOU LOSE \n")
-    print("\n\
-    ______________$$$$$$$$$$____________________\n\
-    _____________$$__$_____$$$$$________________\n\
-    _____________$$_$$__$$____$$$$$$$$__________\n\
-    ____________$$_$$__$$$$$________$$$_________\n\
-    ___________$$_$$__$$__$$_$$$__$$__$$________\n\
-    ___________$$_$$__$__$$__$$$$$$$$__$$_______\n\
-    ____________$$$$$_$$_$$$_$$$$$$$$_$$$_______\n\
-    _____________$$$$$$$$$$$$$_$$___$_$$$$______\n\
-    ________________$$_$$$______$$$$$_$$$$______\n\
-    _________________$$$$_______$$$$$___$$$_____\n\
-    ___________________________$$_$$____$$$$____\n\
-    ___________________________$$_$$____$$$$$___\n\
-    __________________________$$$$$_____$$$$$$__\n\
-    _________________________$__$$_______$$$$$__\n\
-    ________________________$$$_$$________$$$$$_\n\
-    ________________________$$$___________$$$$$_\n\
-    _________________$$$$___$$____________$$$$$$\n\
-    __$$$$$$$$____$$$$$$$$$$_$____________$$$_$$\n\
-    _$$$$$$$$$$$$$$$______$$$$$$$___$$____$$_$$$\n\
-    $$________$$$$__________$_$$$___$$$_____$$$$\n\
-    $$______$$$_____________$$$$$$$$$$$$$$$$$_$$\n\
-    $$______$$_______________$$_$$$$$$$$$$$$$$$_\n\
-    $$_____$_$$$$$__________$$$_$$$$$$$$$$$$$$$_\n\
-    $$___$$$__$$$$$$$$$$$$$$$$$__$$$$$$$$$$$$$__\n\
-    $$_$$$$_____$$$$$$$$$$$$________$$$$$$__$___\n\
-    $$$$$$$$$$$$$$_________$$$$$______$$$$$$$___\n\
-    $$$$_$$$$$______________$$$$$$$$$$$$$$$$____\n\
-    $$__$$$$_____$$___________$$$$$$$$$$$$$_____\n\
-    $$_$$$$$$$$$$$$____________$$$$$$$$$$_______\n\
-    $$_$$$$$$$hg$$$____$$$$$$$$__$$$____________\n\
-    $$$$__$$$$$$$$$$$$$$$$$$$$$$$$______________\n\
-    $$_________$$$$$$$$$$$$$$$__________________\n")
+    you_lose = "\n" + colored_name + " YOU LOSE \n" + "\n" + "______________$$$$$$$$$$____________________\n_____________$$__$_____$$$$$________________\n_____________$$_$$__$$____$$$$$$$$__________\n____________$$_$$__$$$$$________$$$_________\n___________$$_$$__$$__$$_$$$__$$__$$________\n___________$$_$$__$__$$__$$$$$$$$__$$_______\n____________$$$$$_$$_$$$_$$$$$$$$_$$$_______\n_____________$$$$$$$$$$$$$_$$___$_$$$$______\n________________$$_$$$______$$$$$_$$$$______\n_________________$$$$_______$$$$$___$$$_____\n___________________________$$_$$____$$$$____\n___________________________$$_$$____$$$$$___\n__________________________$$$$$_____$$$$$$__\n_________________________$__$$_______$$$$$__\n________________________$$$_$$________$$$$$_\n________________________$$$___________$$$$$_\n_________________$$$$___$$____________$$$$$$\n__$$$$$$$$____$$$$$$$$$$_$____________$$$_$$\n_$$$$$$$$$$$$$$$______$$$$$$$___$$____$$_$$$\n$$________$$$$__________$_$$$___$$$_____$$$$\n$$______$$$_____________$$$$$$$$$$$$$$$$$_$$\n$$______$$_______________$$_$$$$$$$$$$$$$$$_\n$$_____$_$$$$$__________$$$_$$$$$$$$$$$$$$$_\n$$___$$$__$$$$$$$$$$$$$$$$$__$$$$$$$$$$$$$__\n$$_$$$$_____$$$$$$$$$$$$________$$$$$$__$___\n$$$$$$$$$$$$$$_________$$$$$______$$$$$$$___\n$$$$_$$$$$______________$$$$$$$$$$$$$$$$____\n$$__$$$$_____$$___________$$$$$$$$$$$$$_____\n$$_$$$$$$$$$$$$____________$$$$$$$$$$_______\n$$_$$$$$$$hg$$$____$$$$$$$$__$$$____________\n$$$$__$$$$$$$$$$$$$$$$$$$$$$$$______________\n$$_________$$$$$$$$$$$$$$$__________________\n"
+    return you_lose
+
+
+def check_attempts(number_of_attempts,name):
+    if number_of_attempts > 4 and number_of_attempts < 7:
+        print(name + " you still have few chance ...")
+    if number_of_attempts == 7:
+        print(name + " this your last chance... Good luck Man ")
+
+
+def game_logic(win, name, number_to_guess):
+    is_choice_wrong = True
+
+    while is_choice_wrong:
+
+        print("\n")
+        input_choice = input("please insert your lucky number (1/100) ---> ")
+        if input_choice.isdigit():
+            choice = int(input_choice)
+            if choice < 101:
+                is_choice_wrong = False
+
+                if choice > number_to_guess:
+                    choice_number_to_hight(choice)
+
+                elif choice < number_to_guess:
+                    choice_number_to_low(choice)
+
+                if choice == number_to_guess:
+                    win = True
+                    choice_number_win(choice, name)
+                    return win
+            else:
+                print("Invalid input")
+                time.sleep(0.5)
+
+        else:
+            print("Invalid input")
+            time.sleep(0.5)
+
+    return win
 
 
 def start_guess_the_number():
@@ -122,40 +95,12 @@ def start_guess_the_number():
     print(number_to_guess)
     name = player.get_name()
 
-    while number_of_attempts < 8:
-        if number_of_attempts > 4 and number_of_attempts < 7 :
-            print(name + " you still have few chance ...")
-        if number_of_attempts == 7:
-            print(name + " this your last chance... Good luck Man ")
+    while number_of_attempts < 8 and not win :
+        check_attempts(number_of_attempts,name)
 
-        is_choice_wrong = True
-        while is_choice_wrong:
-            print("\n")
-            input_choice = input("please insert your lucky number (1/100) ---> ")
-            if input_choice.isdigit():
-                choice = int(input_choice)
-                if choice < 101:
-                    is_choice_wrong = False
+        win = game_logic(win, name, number_to_guess)
+        number_of_attempts += 1
 
-                    if choice > number_to_guess:
-                        choice_number_to_hight(choice)
-                        number_of_attempts = number_of_attempts + 1
-
-                    elif choice < number_to_guess:
-                        choice_number_to_low(choice)
-                        number_of_attempts = number_of_attempts + 1
-
-                    if choice == number_to_guess:
-                        win = True
-                        choice_number_win(choice, name)
-                        return
-                else:
-                    print("Invalid input")
-                    time.sleep(0.5)
-
-            else:
-                print("Invalid input")
-                time.sleep(0.5)
 
     if not win:
         you_lose_match(name)
