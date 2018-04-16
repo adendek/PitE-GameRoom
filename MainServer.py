@@ -4,7 +4,7 @@
 import socket  # Import socket module
 from Player import Player
 from Servers.ServerTicTacToe import ServerTicTacToe
-#from Servers.ServerGuessNumber import ServerGuessNumber
+from Servers.ServerGuessNumber import ServerGuessNumber
 import json
 import time
 
@@ -90,7 +90,9 @@ class MainServer:
                     tic_tac_toe_game.set_players(self.players)
                     tic_tac_toe_game.start_game()
                 else :
-                    print ("ciao")#ServerGuessNumber.start_game(self,self.players)
+                    guess_game = ServerGuessNumber()
+                    guess_game.set_players(self.players)
+                    guess_game.start_game()
 
 
 MainServer().start_server()

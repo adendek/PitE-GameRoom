@@ -1,4 +1,4 @@
-# Tic_tac_toe_game
+# GuessNumber
 # Authors Mario Carricato & Marco Amato
 
 import random

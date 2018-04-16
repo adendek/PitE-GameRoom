@@ -7,7 +7,7 @@ import os
 from TicTacToe.Tic_tac_toe_game import start_Tic_Tac_Toe_game
 from GuessNumber.GuessNumber import start_guess_the_number
 from Clients.ClientTicTacToe import ClientTicTacToe
-#from Clients.ClientGuessNumber import ClientGuessNumber
+from Clients.ClientGuessNumber import ClientGuessNumber
 
 TIC_TAC_TOE = 0
 GUESS_A_NUMBER = 1
@@ -49,7 +49,9 @@ class MainClient:
             client_tic_tac_toe.set_client_socket(self.client_socket)
             client_tic_tac_toe.start_client()
         else :
-            print("Bye bye")
+            client_guess_number = ClientGuessNumber()
+            client_guess_number.set_client_socket(self.client_socket)
+            client_guess_number.start_client()
 
 
 

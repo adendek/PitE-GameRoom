@@ -85,9 +85,9 @@ class ServerGuessNumber:
 
             if self.number_of_attempts[PLAYER_1] <= 8  :
 
-                check_attempts(self.number_of_attempts[PLAYER_1],PLAYER_1)
+                self.check_attempts(self.number_of_attempts[PLAYER_1],PLAYER_1)
 
-                number_player1 = self.players[PLAYER_1].get_connection().recv(1024).decode()
+                number_player1 = int(self.players[PLAYER_1].get_connection().recv(1024).decode())
 
                 is_game_ended = self.main_logic(number_player1, PLAYER_1)
 
