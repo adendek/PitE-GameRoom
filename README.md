@@ -4,7 +4,7 @@
 
 # PitE-GameRoom
 
-This is the fourth homework of the course "Python in the Enterprise", as requested has been implemented an exention of the Tic Tac Toe multiplayer version (for the previous version you can find further information in this [page](https://github.com/mark91m12/PitE-TicTacToeMultiplayer)), in particular has been implemented a Game Room in which user can choose to play between two type of games ( each in single or multiplayer).
+This is the fourth homework of the course "Python in the Enterprise", as requested has been implemented an exention of the Tic Tac Toe multiplayer version (for the previous version you can find further information in this [page](https://github.com/mark91m12/PitE-TicTacToeMultiplayer)), in particular has been implemented a Game Room in which user can choose to play between two type of games ( each in single or multiplayer ).
 
 Is developed Guess the Number game, it is a fun game that challenges users to find a number based on greater than or less than certain number, in eight attempts. First user that guess the number, ein the game
 
@@ -71,7 +71,7 @@ Is developed Guess the Number game, it is a fun game that challenges users to fi
 * If user must enter the single type of game he have to choose the type of game he want
 
 
-   ```
+   ```shell
     ************************************************
     *                                              *
     *               Play tic tac toe      --- t    *
@@ -105,13 +105,13 @@ Is developed Guess the Number game, it is a fun game that challenges users to fi
     
    ``` shell
     please insert ip address of the game server
-    10.205.12.240
+    >10.205.12.240
     please insert Port number of the game server
-    9999
+    >9999
     waiting for server connection...
     Welcome ('10.205.15.69', 55095)
     Please insert your name
-    Marco
+    >Marco
     At the moment the server is hosting a guess a number game 
     If you want to join Mario insert 1
 
