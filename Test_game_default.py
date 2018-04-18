@@ -5,11 +5,12 @@ import socket
 from TicTacToe.Grid import Grid
 from TicTacToe.Computer import Computer
 from Player import Player
-from GuessNumber import *
+from GuessNumber import GuessNumber
 
 grid_obj = Grid()
 computer = Computer()
 player = Player()
+guessNumber = GuessNumber()
 
 #positions
 LEFT = 4
@@ -23,6 +24,18 @@ DOWN_LEFT_CORNER = 1
 DOWN_RIGHT_CORNER = 3
 
 class TestGame(unittest.TestCase):
+
+    def test_generate_winner_number(self):
+        winner_number = guessNumber.generate_win_number()
+        self.assertIsInstance(winner_number, int)
+
+    def test_check_number_of_attempt_for_guess_number(self):
+        number_of_attemp = 6
+        is_right = guessNumber.number_of_attempts(number_of_attemp, "")
+        self.assertTrue(is_right)
+        number_of_attemp = 12
+        is_right = guessNumber.number_of_attempts(number_of_attemp, "")
+        self.assertFalse(is_right)
 
     def test_draw(self):
         grid_obj.list[1] = "X"; grid_obj.list[2] = "O";  grid_obj.list[3]= "X"
