@@ -4,6 +4,9 @@
 
 # PitE-GameRoom
 
+[![Coverage Status](https://coveralls.io/repos/github/mark91m12/PitE-GameRoom/badge.svg?branch=master)](https://coveralls.io/github/mark91m12/PitE-GameRoom?branch=master)
+
+
 This is the fourth homework of the course "Python in the Enterprise", as requested has been implemented an exention of the Tic Tac Toe multiplayer version (for the previous version you can find further information in this [page](https://github.com/mark91m12/PitE-TicTacToeMultiplayer)), in particular has been implemented a Game Room in which user can choose to play between two type of games ( each in single or multiplayer ).
 
 Is developed Guess the Number game, it is a fun game that challenges users to find a number based on greater than or less than certain number, in eight attempts. First user that guess the number, ein the game
