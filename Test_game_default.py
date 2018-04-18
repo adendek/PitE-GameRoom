@@ -5,6 +5,7 @@ import socket
 from TicTacToe.Grid import Grid
 from TicTacToe.Computer import Computer
 from Player import Player
+from GuessNumber import *
 
 grid_obj = Grid()
 computer = Computer()
