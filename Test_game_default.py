@@ -2,14 +2,15 @@ import unittest
 import os
 import socket
 
+from Clients.ClientGuessNumber import ClientGuessNumber
 from TicTacToe.Grid import Grid
 from TicTacToe.Computer import Computer
 from Player import Player
-from GuessNumber import *
 
 grid_obj = Grid()
 computer = Computer()
 player = Player()
+client_guess = ClientGuessNumber()
 
 #positions
 LEFT = 4
