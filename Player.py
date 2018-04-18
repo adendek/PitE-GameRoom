@@ -45,7 +45,6 @@ class Player:
         self.set_address(address)
         self.set_connection(connection)
 
-    def insert_player_name(self):
-        print("\nHello player, you are welcome....")
-        self.name = input("Insert Your Name \n")
+    def insert_player_name(self,name):
+        self.name = name
 

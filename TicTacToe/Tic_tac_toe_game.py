@@ -15,7 +15,8 @@ player = Player()
 def start_Tic_Tac_Toe_game():
 
     run = 0
-    player.insert_player_name()
+    print("\nHello player, you are welcome....")
+    player.insert_player_name(input("Insert Your Name \n"))
 
     while True:
 

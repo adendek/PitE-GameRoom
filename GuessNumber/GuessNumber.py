@@ -90,7 +90,8 @@ def game_logic(win, name, number_to_guess):
 def start_guess_the_number():
     win = False
     number_of_attempts = 0
-    player.insert_player_name()
+    print("\nHello player, you are welcome....")
+    player.insert_player_name(input("Insert Your Name \n"))
     number_to_guess = generate_win_number()
     print(number_to_guess)
     name = player.get_name()

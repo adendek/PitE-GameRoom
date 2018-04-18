@@ -2,8 +2,8 @@ import unittest
 import os
 import socket
 
-from Grid import Grid
-from Computer import Computer
+from TicTacToe.Grid import Grid
+from TicTacToe.Computer import Computer
 from Player import Player
 
 grid_obj = Grid()
