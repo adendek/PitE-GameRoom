@@ -2,6 +2,8 @@
   <img width="460" height="300" src="https://github.com/Mario181091/Mario_content/blob/master/Senza%20titolo4.jpg">
 </p>
 
+[![Build Status](https://travis-ci.org/mark91m12/PitE-GameRoom.svg?branch=master)](https://travis-ci.org/mark91m12/PitE-GameRoom)      [![Coverage Status](https://coveralls.io/repos/github/mark91m12/PitE-GameRoom/badge.svg?branch=master)](https://coveralls.io/github/mark91m12/PitE-GameRoom?branch=master)     [![HitCount](http://hits.dwyl.io/mark91m12/PitE-GameRoom.svg)](http://hits.dwyl.io/mark91m12/PitE-GameRoom)
+
 # PitE-GameRoom
 
 This is the fourth homework of the course "Python in the Enterprise", as requested has been implemented an exention of the Tic Tac Toe multiplayer version (for the previous version you can find further information in this [page](https://github.com/mark91m12/PitE-TicTacToeMultiplayer)), in particular has been implemented a Game Room in which user can choose to play between two type of games ( each in single or multiplayer ).
