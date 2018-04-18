@@ -2,9 +2,9 @@
   <img width="460" height="300" src="https://github.com/Mario181091/Mario_content/blob/master/Senza%20titolo4.jpg">
 </p>
 
-[![Build Status](https://travis-ci.org/mark91m12/PitE-GameRoom.svg?branch=master)](https://travis-ci.org/mark91m12/PitE-GameRoom)      [![Coverage Status](https://coveralls.io/repos/github/mark91m12/PitE-GameRoom/badge.svg?branch=master)](https://coveralls.io/github/mark91m12/PitE-GameRoom?branch=master)     [![HitCount](http://hits.dwyl.io/mark91m12/PitE-GameRoom.svg)](http://hits.dwyl.io/mark91m12/PitE-GameRoom)
 
 # PitE-GameRoom
+[![Build Status](https://travis-ci.org/mark91m12/PitE-GameRoom.svg?branch=master)](https://travis-ci.org/mark91m12/PitE-GameRoom)      [![Coverage Status](https://coveralls.io/repos/github/mark91m12/PitE-GameRoom/badge.svg?branch=master)](https://coveralls.io/github/mark91m12/PitE-GameRoom?branch=master)     [![HitCount](http://hits.dwyl.io/mark91m12/PitE-GameRoom.svg)](http://hits.dwyl.io/mark91m12/PitE-GameRoom)
 
 [![Coverage Status](https://coveralls.io/repos/github/mark91m12/PitE-GameRoom/badge.svg?branch=master)](https://coveralls.io/github/mark91m12/PitE-GameRoom?branch=master)
 
