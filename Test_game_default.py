@@ -5,7 +5,7 @@ import socket
 from TicTacToe.Grid import Grid
 from TicTacToe.Computer import Computer
 from Player import Player
-from GuessNumber import GuessNumber
+from GuessNumber.GuessNumber import GuessNumber
 
 grid_obj = Grid()
 computer = Computer()
@@ -31,10 +31,10 @@ class TestGame(unittest.TestCase):
 
     def test_check_number_of_attempt_for_guess_number(self):
         number_of_attemp = 6
-        is_right = guessNumber.number_of_attempts(number_of_attemp, "")
+        is_right = guessNumber.check_attempts(number_of_attemp, "")
         self.assertTrue(is_right)
         number_of_attemp = 12
-        is_right = guessNumber.number_of_attempts(number_of_attemp, "")
+        is_right = guessNumber.check_attempts(number_of_attemp, "")
         self.assertFalse(is_right)
 
 
