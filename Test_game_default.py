@@ -37,6 +37,7 @@ class TestGame(unittest.TestCase):
         is_right = guessNumber.number_of_attempts(number_of_attemp, "")
         self.assertFalse(is_right)
 
+
     def test_draw(self):
         grid_obj.list[1] = "X"; grid_obj.list[2] = "O";  grid_obj.list[3]= "X"
         grid_obj.list[4] = "O"; grid_obj.list[5] = "X";  grid_obj.list[6] = "O"
