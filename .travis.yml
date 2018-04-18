@@ -1,0 +1,14 @@
+language: python
+python:
+  - "3.5"
+  - "3.6"
+
+# command to install dependencies
+install:  
+  - pip install python-coveralls
+
+script:
+  - coverage run Test_game_default.py
+
+after_success:
+- coveralls
