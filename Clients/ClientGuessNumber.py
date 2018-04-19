@@ -1,6 +1,7 @@
 #ClientTicTacToe
 #Authors Mario Carricato & Marco Amato
 
+import socket
 import json
 import os
 import time

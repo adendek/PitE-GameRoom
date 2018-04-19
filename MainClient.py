@@ -5,7 +5,7 @@ import socket
 import json
 import os
 from TicTacToe.Tic_tac_toe_game import start_Tic_Tac_Toe_game
-from GuessNumber.GuessNumber import GuessNumber
+from GuessNumber.GuessNumber import start_guess_the_number
 from Clients.ClientTicTacToe import ClientTicTacToe
 from Clients.ClientGuessNumber import ClientGuessNumber
 
@@ -15,7 +15,8 @@ GUESS_A_NUMBER = 1
 
 class MainClient:
     def __init__(self):
-        self.guessNumber = GuessNumber()
+        self.client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  
+        self.client_socket.connect((HOST, PORT))
 
     def start_client(self):
         print("waiting for server connection...")
@@ -50,64 +51,56 @@ class MainClient:
             client_guess_number.set_client_socket(self.client_socket)
             client_guess_number.start_client()
 
-    def init_main_istance(self):
-        print("\n")
-        print("************************************************")
-        print("*****               Game Room             ******")
+
+print("\n")
+print("************************************************")
+print("*****               Game Room             ******")
+print("************************************************")
+print("*                                              *")
+print("*               Play single player  --- s      *")
+print("*                                              *")
+print("*               Play multi player   --- m      *")
+print("*                                              *")
+print("************************************************")
+
+while True:
+
+    print("\n")
+    choice = input("Please, choose one mode ( s or m ) ---->    ")
+    print("\n")
+    os.system("clear")
+
+    if choice == "s":
         print("************************************************")
         print("*                                              *")
-        print("*               Play single player  --- s      *")
+        print("*               Play tic tac toe      --- t    *")
         print("*                                              *")
-        print("*               Play multi player   --- m      *")
+        print("*               Play guess a number   --- g    *")
         print("*                                              *")
         print("************************************************")
 
         while True:
 
+            choice = input("\nPlease, choose one game ( t or g ) ---->    ")
             print("\n")
-            choice = input("Please, choose one mode ( s or m ) ---->    ")
-            print("\n")
-            os.system("clear")
 
-            if choice == "s":
-                print("************************************************")
-                print("*                                              *")
-                print("*               Play tic tac toe      --- t    *")
-                print("*                                              *")
-                print("*               Play guess a number   --- g    *")
-                print("*                                              *")
-                print("************************************************")
-
-                while True:
-
-                    choice = input("\nPlease, choose one game ( t or g ) ---->    ")
-                    print("\n")
-
-                    if choice == "t":
-                        start_Tic_Tac_Toe_game()
-                        break
-                    elif choice == "g":
-                        self.guessNumber.start_guess_the_number()
-                        break
-                    else :
-                        print("You entered wrong choice\n")
-
+            if choice == "t":
+                start_Tic_Tac_Toe_game()
                 break
-
-            elif choice == "m":
-                HOST = str(input("please insert ip address of the game server\n"))                     # HOST = "10.205.12.240"
-                PORT = int(input("please insert Port number of the game server\n"))                    # PORT = 9999
-                self.client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                self.client_socket.connect((HOST, PORT))
-
-                MainClient().start_client()
-
+            elif choice == "g":
+                start_guess_the_number()
                 break
-
-            else:
+            else :
                 print("You entered wrong choice\n")
 
+        break
 
-if __name__ == '__main__':
-    mainClient = MainClient()
-    mainClient.init_main_istance()
+    elif choice == "m":
+        HOST = str(input("please insert ip address of the game server\n"))                     # HOST = "10.205.12.240"
+        PORT = int(input("please insert Port number of the game server\n"))                    # PORT = 9999
+        MainClient().start_client()
+
+        break
+
+    else:
+        print("You entered wrong choice\n")
