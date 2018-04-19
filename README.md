@@ -4,7 +4,7 @@
 
 # PitE-GameRoom
 
-[![Build Status](https://travis-ci.org/mark91m12/PitE-GameRoom.svg?branch=master)](https://travis-ci.org/mark91m12/PitE-GameRoom)     [![Coverage Status](https://coveralls.io/repos/github/mark91m12/PitE-GameRoom/badge.svg?branch=master&service=GitHub)](https://coveralls.io/github/mark91m12/PitE-GameRoom?branch=master&service=GitHub)    [![HitCount](http://hits.dwyl.io/mark91m12/PitE-GameRoom.svg)](http://hits.dwyl.io/mark91m12/PitE-GameRoom)
+[![Build Status](https://travis-ci.org/mark91m12/PitE-GameRoom.svg?branch=master)](https://travis-ci.org/mark91m12/PitE-GameRoom)     [![Coverage Status](https://coveralls.io/repos/github/mark91m12/PitE-GameRoom/badge.svg?branch=master&service=GitHub)](https://coveralls.io/github/mark91m12/PitE-GameRoom?branch=master&service=GitHub)    [![HitCount](http://hits.dwyl.io/mark91m12/PitE-GameRoom.svg)](http://hits.dwyl.io/mark91m12/PitE-GameRoom) [![M&M](https://img.shields.io/badge/m%26m-projects-blue.svg)](https://img.shields.io/badge/m%26m-projects-blue.svg)
 
 This is the fourth homework of the course "Python in the Enterprise", as requested has been implemented an exention of the Tic Tac Toe multiplayer version (for the previous version you can find further information in this [page](https://github.com/mark91m12/PitE-TicTacToeMultiplayer)), in particular has been implemented a Game Room in which user can choose to play between two type of games ( each in single or multiplayer ).
 
