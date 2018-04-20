@@ -5,6 +5,7 @@ import socket
 import json
 import os
 import time
+from Common import *
 
 from Clients.FactoryClient import AbstractClient
 
@@ -12,7 +13,7 @@ from Clients.FactoryClient import AbstractClient
 class ClientGuessNumber(AbstractClient):
     def __init__(self):
         self.client_socket = None
-        self.type_of_client = 1
+        self.type_of_client = GamesType.GuessNumber.value
 
     def get_type_of_client(self):
         return self.type_of_client
@@ -35,7 +36,7 @@ class ClientGuessNumber(AbstractClient):
                 json_object = json.loads(response.decode())
                 type_message = json_object.get("type")
 
-                if type_message == 0:
+                if type_message == MessageType.CHECK_ATTEMPTS.value:
 
                        is_choice_wrong = True
                        message = json_object.get("message")
@@ -58,14 +59,13 @@ class ClientGuessNumber(AbstractClient):
                             print("Invalid input")
                             time.sleep(0.5)
 
-                elif type_message == 1:
+                elif type_message == MessageType.RESPONSE.value:
 
                     os.system("clear")
                     message = json_object.get("message")
                     print("\n"+message)
 
                 else:
-
                     os.system("clear")
                     message = json_object.get("message")
                     print("\n" + message)

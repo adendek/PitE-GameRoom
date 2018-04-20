@@ -5,15 +5,9 @@ from TicTacToe.Grid import Grid
 import time
 import json
 from Servers.FactoryServer import AbstractServer
-
-# players index of Server list
-PLAYER_1 = 0
-PLAYER_2 = 1
-
-# messages types codes
-UPDATE_GUI = 0
-MOVE_REQUEST = 1
-END_GAME = 2
+from Common import GamesType
+from Common import PlayerType
+from Common import MessageType
 
 
 class ServerTicTacToe(AbstractServer):
@@ -23,7 +17,7 @@ class ServerTicTacToe(AbstractServer):
         self.grid = Grid()
         self.player_winner = ""
         self.draw = False
-        self.type_of_server = 0
+        self.type_of_server = GamesType.TicTacToe.value
 
     def get_type_of_server(self):
         return self.type_of_server
@@ -58,17 +52,17 @@ class ServerTicTacToe(AbstractServer):
         is_game_ended = False
 
         welcome_message = "***** START MATCH *****\n" + \
-                          self.players[PLAYER_1].get_name() + " VS " + self.players[
-                              PLAYER_2].get_name() + "\n" + \
-                          self.players[PLAYER_1].get_name() + " will play with symbol " + self.players[
-                              PLAYER_1].get_symbol() + "\n" + \
-                          self.players[PLAYER_2].get_name() + " will play with symbol " + self.players[
-                              PLAYER_2].get_symbol() + "\n"
+                          self.players[PlayerType.Player1.value].get_name() + " VS " + self.players[
+                              PlayerType.Player2.value].get_name() + "\n" + \
+                          self.players[PlayerType.Player1.value].get_name() + " will play with symbol " + self.players[
+                              PlayerType.Player1.value].get_symbol() + "\n" + \
+                          self.players[PlayerType.Player2.value].get_name() + " will play with symbol " + self.players[
+                              PlayerType.Player2.value].get_symbol() + "\n"
 
         print(welcome_message)
 
-        self.players[PLAYER_1].get_connection().send(welcome_message.encode())
-        self.players[PLAYER_2].get_connection().send(welcome_message.encode())
+        self.players[PlayerType.Player1.value].get_connection().send(welcome_message.encode())
+        self.players[PlayerType.Player2.value].get_connection().send(welcome_message.encode())
 
         time.sleep(4)
 
@@ -78,65 +72,65 @@ class ServerTicTacToe(AbstractServer):
         moves_number = 0
         while not is_game_ended:
 
-            self.send_request(message_turn, PLAYER_1, MOVE_REQUEST)
+            self.send_request(message_turn, PlayerType.Player1.value, MessageType.MOVE_REQUEST.value)
             time.sleep(2)
-            self.send_request("", PLAYER_2, UPDATE_GUI)
+            self.send_request("", PlayerType.Player2.value, MessageType.UPDATE_GUI.value)
 
             choice_check = True
 
             while choice_check:
 
-                choice = int((self.players[PLAYER_1].get_connection().recv(1024).decode()))
+                choice = int((self.players[PlayerType.Player1.value].get_connection().recv(1024).decode()))
 
-                if self.grid.list[choice] != self.players[PLAYER_1].get_symbol() and self.grid.list[choice] != \
-                        self.players[PLAYER_2].get_symbol():
-                    self.grid.list[choice] = self.players[PLAYER_1].get_symbol()
+                if self.grid.list[choice] != self.players[PlayerType.Player1.value].get_symbol() and self.grid.list[choice] != \
+                        self.players[PlayerType.Player2.value].get_symbol():
+                    self.grid.list[choice] = self.players[PlayerType.Player1.value].get_symbol()
                     moves_number += 1
-                    self.send_request("", PLAYER_1, UPDATE_GUI)
+                    self.send_request("", PlayerType.Player1.value, MessageType.UPDATE_GUI.value)
                     choice_check = False
                 else:
 
-                    self.send_request(message_not_empty, PLAYER_1, MOVE_REQUEST)
+                    self.send_request(message_not_empty, PlayerType.Player1.value, MessageType.MOVE_REQUEST.value)
 
-            if self.check_victory(self.players[PLAYER_1]) or self.check_draw(moves_number):
+            if self.check_victory(self.players[PlayerType.Player1.value]) or self.check_draw(moves_number):
                 is_game_ended = True
 
             if not is_game_ended:
 
-                self.send_request(message_turn, PLAYER_2, MOVE_REQUEST)
+                self.send_request(message_turn, PlayerType.Player2.value, MessageType.MOVE_REQUEST.value)
 
                 choice_check = True
 
                 while choice_check:
 
-                    choice = int((self.players[PLAYER_2].get_connection().recv(1024).decode()))
+                    choice = int((self.players[PlayerType.Player2.value].get_connection().recv(1024).decode()))
 
-                    if self.grid.list[choice] != self.players[PLAYER_1].get_symbol() and self.grid.list[
-                        choice] != self.players[PLAYER_2].get_symbol():
-                        self.grid.list[choice] = self.players[PLAYER_2].get_symbol()
+                    if self.grid.list[choice] != self.players[PlayerType.Player1.value].get_symbol() and self.grid.list[
+                        choice] != self.players[PlayerType.Player2.value].get_symbol():
+                        self.grid.list[choice] = self.players[PlayerType.Player2.value].get_symbol()
                         moves_number += 1
-                        self.send_request("", PLAYER_2, UPDATE_GUI)
+                        self.send_request("", PlayerType.Player2.value, MessageType.UPDATE_GUI.value)
                         choice_check = False
                     else:
                         message = "sorry this cell is not empty.\nChoose another one:"
-                        self.send_request(message_not_empty, PLAYER_2, MOVE_REQUEST)
+                        self.send_request(message_not_empty, PlayerType.Player2.value, MessageType.MOVE_REQUEST.value)
                         time.sleep(1)
 
-                if self.check_victory(self.players[PLAYER_2]) or self.check_draw(moves_number):
+                if self.check_victory(self.players[PlayerType.Player2.value]) or self.check_draw(moves_number):
                     is_game_ended = True
 
         if not self.draw:
             message_winner = "\033[92mCongratulations, you won the game!!!\033[0m \n"
             message_loser = "\033[31;1mYou Lose...\033[0m\n"
 
-            if self.player_winner == self.players[PLAYER_1].get_name():
-                self.send_request(message_winner, PLAYER_1, END_GAME)
-                self.send_request(message_loser, PLAYER_2, END_GAME)
+            if self.player_winner == self.players[PlayerType.Player1.value].get_name():
+                self.send_request(message_winner, PlayerType.Player1.value, MessageType.END_GAME.value)
+                self.send_request(message_loser, PlayerType.Player2.value, MessageType.END_GAME.value)
             else:
-                self.send_request(message_winner, PLAYER_2, END_GAME)
-                self.send_request(message_loser, PLAYER_1, END_GAME)
+                self.send_request(message_winner, PlayerType.Player2.value, MessageType.END_GAME.value)
+                self.send_request(message_loser, PlayerType.Player1.value, MessageType.END_GAME.value)
         else:
             message_draw = "\033[38;5;13mThe Match terminates with a Draw!!!\033[0m\n"
-            self.send_request(message_draw, PLAYER_1, END_GAME)
-            self.send_request(message_draw, PLAYER_2, END_GAME)
+            self.send_request(message_draw, PlayerType.Player1.value, MessageType.END_GAME.value)
+            self.send_request(message_draw, PlayerType.Player2.value, MessageType.END_GAME.value)
 

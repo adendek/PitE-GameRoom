@@ -6,24 +6,15 @@ import json
 import os
 from TicTacToe.Grid import Grid
 from Clients.FactoryClient import AbstractClient
-
-#MOVES
-LEFT = "4"
-CENTER = "5"
-RIGHT = "6"
-UP = "8"
-DOWN = "2"
-UP_LEFT_CORNER = "7"
-UP_RIGHT_CORNER = "9"
-DOWN_LEFT_CORNER = "1"
-DOWN_RIGHT_CORNER = "3"
+from Common import *
+import Common
 
 
 class ClientTicTacToe(AbstractClient):
     def __init__(self):
         self.client_socket = None
         self.grid = Grid()
-        self.type_of_client = 0
+        self.type_of_client = GamesType.TicTacToe.value
 
     def get_type_of_client(self):
         return self.type_of_client
@@ -47,7 +38,7 @@ class ClientTicTacToe(AbstractClient):
                 type_message = json_object.get("type")
                 grid_list = json_object.get("grid")
 
-                if type_message == 1:
+                if type_message == MessageType.MOVE_REQUEST.value:
 
                     valid_input = False
                     os.system("clear")
@@ -58,7 +49,7 @@ class ClientTicTacToe(AbstractClient):
 
                     while not valid_input:
                         player_choice = input()
-                        if player_choice in [LEFT, RIGHT, CENTER, UP, DOWN, UP_LEFT_CORNER, UP_RIGHT_CORNER, DOWN_LEFT_CORNER, DOWN_RIGHT_CORNER]:
+                        if int(player_choice) in [Common.LEFT, Common.RIGHT, Common.CENTER, Common.UP, Common.DOWN, Common.UP_LEFT_CORNER, Common.UP_RIGHT_CORNER, Common.DOWN_LEFT_CORNER, Common.DOWN_RIGHT_CORNER]:
                             valid_input = True
                             self.client_socket.send(player_choice.encode())
                         else:
@@ -67,7 +58,7 @@ class ClientTicTacToe(AbstractClient):
                             print("\nyou have inserted invalid input")
                             print("Try Again")
 
-                elif type_message == 2:
+                elif type_message == MessageType.END_GAME.value:
 
                     os.system("clear")
                     self.grid.draw_grid(grid_list)

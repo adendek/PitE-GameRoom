@@ -5,20 +5,12 @@ import socket  # Import socket module
 from Player import Player
 from Servers.ServerTicTacToe import ServerTicTacToe
 from Servers.ServerGuessNumber import ServerGuessNumber
-import json
+from Common import GamesType
+from Common import PlayerType
 import time
 
-PORT = 1111# Reserve a port for your service.
+PORT = 9999  # Reserve a port for your service.
 HOST = socket.gethostbyname(socket.gethostname())  # Get local ip name
-
-#CODES for 2 servers
-TIC_TAC_TOE = 0
-GUESS_NUMBER = 1
-
-# players index of Server list
-PLAYER_1 = 0
-PLAYER_2 = 1
-
 
 class MainServer:
     def __init__(self):
@@ -52,13 +44,13 @@ class MainServer:
                 message = "At the moment the server is hosting a "
                 game_message = ""
 
-                if self.game_mode == TIC_TAC_TOE:
+                if self.game_mode == GamesType.TicTacToe.value:
                     game_message = "tic tac toe game "
-                else :
+                elif self.game_mode == GamesType.GuessNumber.value:
                     game_message = "guess a number game "
 
                 player.get_connection().send(
-                    (message+game_message +"\nIf you want to join "+ self.players[PLAYER_1].get_name()+" insert "+str(self.game_mode)).encode())
+                    (message+game_message +"\nIf you want to join "+ self.players[PlayerType.Player1.value].get_name()+" insert "+str(self.game_mode)).encode())
 
                 game_mode_choice = int(player.get_connection().recv(1024).decode())
 
@@ -73,7 +65,7 @@ class MainServer:
                 player.set_symbol("\033[38;5;11mX\033[0m")
 
                 player.get_connection().send(
-                    ("Please choose a game :\n0 for Tic Tac Toe \n1 for Guess a number \n ").encode())
+                    ("Please choose a game :\n1 for Tic Tac Toe \n2 for Guess a number \n ").encode())
 
                 self.game_mode = int(player.get_connection().recv(1024).decode())
 

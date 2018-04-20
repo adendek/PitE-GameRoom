@@ -2,48 +2,37 @@
 #Authors Mario Carricato & Marco Amato
 
 import os
-
-#positions
-LEFT = 4
-CENTER = 5
-RIGHT = 6
-UP = 8
-DOWN = 2
-UP_LEFT_CORNER = 7
-UP_RIGHT_CORNER = 9
-DOWN_LEFT_CORNER = 1
-DOWN_RIGHT_CORNER = 3
-
+import Common
 
 class Grid:
     def __init__(self):
-        self.list = ["", str(DOWN_LEFT_CORNER), str(DOWN), str(DOWN_RIGHT_CORNER), str(LEFT), str(CENTER), str(RIGHT), str(UP_LEFT_CORNER), str(UP), str(UP_RIGHT_CORNER)]
+        self.list = ["", str(Common.DOWN_LEFT_CORNER), str(Common.DOWN), str(Common.DOWN_RIGHT_CORNER), str(Common.LEFT), str(Common.CENTER), str(Common.RIGHT), str(Common.UP_LEFT_CORNER), str(Common.UP), str(Common.UP_RIGHT_CORNER)]
 
     def print_grid(self):
         print ("   |   |   ")
-        print (" " + self.list[UP_LEFT_CORNER] + " | " + self.list[UP] + " | " + self.list[UP_RIGHT_CORNER] + "  ")
+        print (" " + self.list[int(Common.UP_LEFT_CORNER)] + " | " + self.list[int(Common.UP)] + " | " + self.list[int(Common.UP_RIGHT_CORNER)] + "  ")
         print ("   |   |   ")
         print ("-----------")
         print ("   |   |   ")
-        print (" " + self.list[LEFT] + " | " + self.list[CENTER] + " | " + self.list[RIGHT] + "  ")
+        print (" " + self.list[int(Common.LEFT)] + " | " + self.list[int(Common.CENTER)] + " | " + self.list[int(Common.RIGHT)] + "  ")
         print ("   |   |   ")
         print ("-----------")
         print ("   |   |   ")
-        print (" " + self.list[DOWN_LEFT_CORNER] + " | " + self.list[DOWN] + " | " + self.list[DOWN_RIGHT_CORNER] + "  ")
+        print (" " + self.list[int(Common.DOWN_LEFT_CORNER)] + " | " + self.list[int(Common.DOWN)] + " | " + self.list[int(Common.DOWN_RIGHT_CORNER)] + "  ")
         print ("   |   |   ")
 
     def draw_grid(self, list):
         if(len(list))>0:
             print ("   |   |   ")
-            print (" " + list[UP_LEFT_CORNER] + " | " + list[UP] + " | " + list[UP_RIGHT_CORNER] + "  ")
+            print (" " + list[int(Common.UP_LEFT_CORNER)] + " | " + list[int(Common.UP)] + " | " + list[int(Common.UP_RIGHT_CORNER)] + "  ")
             print ("   |   |   ")
             print ("-----------")
             print ("   |   |   ")
-            print (" " + list[LEFT] + " | " + list[CENTER] + " | " + list[RIGHT] + "  ")
+            print (" " + list[int(Common.LEFT)] + " | " + list[int(Common.CENTER)] + " | " + list[int(Common.RIGHT)] + "  ")
             print ("   |   |   ")
             print ("-----------")
             print ("   |   |   ")
-            print (" " + list[DOWN_LEFT_CORNER] + " | " + list[DOWN] + " | " + list[DOWN_RIGHT_CORNER] + "  ")
+            print (" " + list[int(Common.DOWN_LEFT_CORNER)] + " | " + list[int(Common.DOWN)] + " | " + list[int(Common.DOWN_RIGHT_CORNER)] + "  ")
             print ("   |   |   ")
 
             return True
@@ -51,21 +40,21 @@ class Grid:
             return False
 
     def is_winner_player(self, type):
-        if self.list[DOWN_LEFT_CORNER] == type and self.list[DOWN] == type and self.list[DOWN_RIGHT_CORNER] == type:
+        if self.list[int(Common.DOWN_LEFT_CORNER)] == type and self.list[int(Common.DOWN)] == type and self.list[int(Common.DOWN_RIGHT_CORNER)] == type:
             return True
-        elif self.list[LEFT] == type and self.list[CENTER] == type and self.list[RIGHT] == type:
+        elif self.list[int(Common.LEFT)] == type and self.list[int(Common.CENTER)] == type and self.list[int(Common.RIGHT)] == type:
             return True
-        if self.list[UP_LEFT_CORNER] == type and self.list[UP] == type and self.list[UP_RIGHT_CORNER] == type:
+        if self.list[int(Common.UP_LEFT_CORNER)] == type and self.list[int(Common.UP)] == type and self.list[int(Common.UP_RIGHT_CORNER)] == type:
             return True
-        if self.list[DOWN_LEFT_CORNER] == type and self.list[LEFT] == type and self.list[UP_LEFT_CORNER] == type:
+        if self.list[int(Common.DOWN_LEFT_CORNER)] == type and self.list[int(Common.LEFT)] == type and self.list[int(Common.UP_LEFT_CORNER)] == type:
             return True
-        if self.list[DOWN] == type and self.list[CENTER] == type and self.list[UP] == type:
+        if self.list[int(Common.DOWN)] == type and self.list[int(Common.CENTER)] == type and self.list[int(Common.UP)] == type:
             return True
-        if self.list[DOWN_RIGHT_CORNER] == type and self.list[RIGHT] == type and self.list[UP_RIGHT_CORNER] == type:
+        if self.list[int(Common.DOWN_RIGHT_CORNER)] == type and self.list[int(Common.RIGHT)] == type and self.list[int(Common.UP_RIGHT_CORNER)] == type:
             return True
-        if self.list[DOWN_RIGHT_CORNER] == type and self.list[CENTER] == type and self.list[UP_LEFT_CORNER] == type:
+        if self.list[int(Common.DOWN_RIGHT_CORNER)] == type and self.list[int(Common.CENTER)] == type and self.list[int(Common.UP_LEFT_CORNER)] == type:
             return True
-        if self.list[DOWN_LEFT_CORNER] == type and self.list[CENTER] == type and self.list[UP_RIGHT_CORNER] == type:
+        if self.list[int(Common.DOWN_LEFT_CORNER)] == type and self.list[int(Common.CENTER)] == type and self.list[int(Common.UP_RIGHT_CORNER)] == type:
             return True
 
         return False
