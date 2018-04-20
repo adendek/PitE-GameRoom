@@ -8,7 +8,7 @@ from Servers.ServerGuessNumber import ServerGuessNumber
 import json
 import time
 
-PORT = 9916 # Reserve a port for your service.
+PORT = 1111# Reserve a port for your service.
 HOST = socket.gethostbyname(socket.gethostname())  # Get local ip name
 
 #CODES for 2 servers
@@ -27,6 +27,7 @@ class MainServer:
         self.server_socket.listen(5)
         self.players = []
         self.game_mode = 0
+        self.list_of_servers = [ServerTicTacToe(), ServerGuessNumber()]
 
     def start_server(self):
 
@@ -82,14 +83,10 @@ class MainServer:
                 self.players.append(player)
 
             if len(self.players) == 2:
-                if self.game_mode == TIC_TAC_TOE :
-                    tic_tac_toe_game = ServerTicTacToe()
-                    tic_tac_toe_game.set_players(self.players)
-                    tic_tac_toe_game.start_game()
-                else :
-                    guess_game = ServerGuessNumber()
-                    guess_game.set_players(self.players)
-                    guess_game.start_game()
+                for server in self.list_of_servers:
+                    if server.get_type_of_server() == int(self.game_mode):
+                        server.set_players(self.players)
+                        server.start_game()
 
 
 MainServer().start_server()

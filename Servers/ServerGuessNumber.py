@@ -4,6 +4,7 @@
 import time
 import json
 from GuessNumber.GuessNumber import *
+from Servers.FactoryServer import AbstractServer
 
 # players index of Server list
 PLAYER_1 = 0
@@ -15,7 +16,7 @@ RESPONSE = 1
 END_GAME = 2
 
 
-class ServerGuessNumber:
+class ServerGuessNumber(AbstractServer):
 
     def __init__(self):
         self.players = []
@@ -24,6 +25,10 @@ class ServerGuessNumber:
         self.number_to_guess = generate_win_number()
         self.draw = False
         self.number_of_attempts = [0, 0]
+        self.type_of_server = 1
+
+    def get_type_of_server(self):
+        return self.type_of_server
 
     def set_players(self, players):
         self.players = players

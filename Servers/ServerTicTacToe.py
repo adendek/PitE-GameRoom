@@ -4,6 +4,7 @@
 from TicTacToe.Grid import Grid
 import time
 import json
+from Servers.FactoryServer import AbstractServer
 
 # players index of Server list
 PLAYER_1 = 0
@@ -15,15 +16,19 @@ MOVE_REQUEST = 1
 END_GAME = 2
 
 
-class ServerTicTacToe:
+class ServerTicTacToe(AbstractServer):
 
     def __init__(self):
         self.players = []
         self.grid = Grid()
         self.player_winner = ""
         self.draw = False
+        self.type_of_server = 0
 
-    def set_players(self,players):
+    def get_type_of_server(self):
+        return self.type_of_server
+
+    def set_players(self, players):
         self.players = players
 
     def send_request(self, message, player, type):
