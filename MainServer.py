@@ -8,7 +8,7 @@ from Servers.ServerGuessNumber import ServerGuessNumber
 import json
 import time
 
-PORT = 9999 # Reserve a port for your service.
+PORT = 9916 # Reserve a port for your service.
 HOST = socket.gethostbyname(socket.gethostname())  # Get local ip name
 
 #CODES for 2 servers

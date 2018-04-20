@@ -74,6 +74,7 @@ class ServerTicTacToe:
         while not is_game_ended:
 
             self.send_request(message_turn, PLAYER_1, MOVE_REQUEST)
+            time.sleep(2)
             self.send_request("", PLAYER_2, UPDATE_GUI)
 
             choice_check = True

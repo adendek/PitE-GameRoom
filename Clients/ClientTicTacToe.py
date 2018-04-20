@@ -5,6 +5,7 @@ import socket
 import json
 import os
 from TicTacToe.Grid import Grid
+from Clients.FactoryClient import AbstractClient
 
 #MOVES
 LEFT = "4"
@@ -18,12 +19,16 @@ DOWN_LEFT_CORNER = "1"
 DOWN_RIGHT_CORNER = "3"
 
 
-class ClientTicTacToe:
+class ClientTicTacToe(AbstractClient):
     def __init__(self):
         self.client_socket = None
         self.grid = Grid()
+        self.type_of_client = 0
 
-    def set_client_socket(self,client_socket):
+    def get_type_of_client(self):
+        return self.type_of_client
+
+    def set_client_socket(self, client_socket):
         self.client_socket = client_socket
 
     def start_client(self):

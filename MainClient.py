@@ -8,6 +8,7 @@ from TicTacToe.Tic_tac_toe_game import start_Tic_Tac_Toe_game
 from GuessNumber.GuessNumber import start_guess_the_number
 from Clients.ClientTicTacToe import ClientTicTacToe
 from Clients.ClientGuessNumber import ClientGuessNumber
+from Clients.FactoryClient import AbstractClient
 
 TIC_TAC_TOE = 0
 GUESS_A_NUMBER = 1
@@ -17,6 +18,7 @@ class MainClient:
     def __init__(self):
         self.client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  
         self.client_socket.connect((HOST, PORT))
+        self.list_of_clients = [ClientTicTacToe(), ClientGuessNumber()]
 
     def start_client(self):
         print("waiting for server connection...")
@@ -42,15 +44,10 @@ class MainClient:
             else :
                 print("you entered a wrong choice\nPlease choose a game :\n0 for Tic Tac Toe \n1 for Guess a number \n")
 
-        if int(game_mode) == TIC_TAC_TOE:
-            client_tic_tac_toe = ClientTicTacToe()
-            client_tic_tac_toe.set_client_socket(self.client_socket)
-            client_tic_tac_toe.start_client()
-        else :
-            client_guess_number = ClientGuessNumber()
-            client_guess_number.set_client_socket(self.client_socket)
-            client_guess_number.start_client()
-
+        for client in self.list_of_clients:
+            if client.get_type_of_client() == int(game_mode):
+               client.set_client_socket(self.client_socket)
+               client.start_client()
 
 print("\n")
 print("************************************************")
@@ -78,6 +75,7 @@ while True:
         print("*               Play guess a number   --- g    *")
         print("*                                              *")
         print("************************************************")
+
 
         while True:
 

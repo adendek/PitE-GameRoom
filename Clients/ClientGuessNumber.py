@@ -6,10 +6,16 @@ import json
 import os
 import time
 
+from Clients.FactoryClient import AbstractClient
 
-class ClientGuessNumber:
+
+class ClientGuessNumber(AbstractClient):
     def __init__(self):
         self.client_socket = None
+        self.type_of_client = 1
+
+    def get_type_of_client(self):
+        return self.type_of_client
 
     def set_client_socket(self, client_socket):
         self.client_socket = client_socket
