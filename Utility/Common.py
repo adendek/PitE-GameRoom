@@ -20,6 +20,7 @@ class PlayerType(enum.Enum):
     Player1 = 0
     Player2 = 1
 
+
 class MessageType(enum.Enum):
     UPDATE_GUI = 0
     MOVE_REQUEST = 1
@@ -27,3 +28,15 @@ class MessageType(enum.Enum):
     CHECK_ATTEMPTS = 32
     RESPONSE = 4
 
+
+class ServerState(enum.Enum):
+    LISTEN = 1
+    CONNECTED = 2
+    REFRESH = 3
+
+
+class ServerEvent(enum.Enum):
+    WAIT_PLAYER = 1
+    START_MATCH = 2
+    FINISH_MATCH = 3
+    END_REINIT = 4

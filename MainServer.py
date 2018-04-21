@@ -7,6 +7,10 @@ from Servers.ServerTicTacToe import ServerTicTacToe
 from Servers.ServerGuessNumber import ServerGuessNumber
 from Utility.Common import GamesType
 from Utility.Common import PlayerType
+from Utility.Common import ServerState
+from Utility.Common import ServerEvent
+from Transaction import Transaction
+
 import time
 
 PORT = 9999  # Reserve a port for your service.
@@ -20,6 +24,13 @@ class MainServer:
         self.players = []
         self.game_mode = 0
         self.list_of_servers = [ServerTicTacToe(), ServerGuessNumber()]
+        self.server_current_state = ServerState.LISTEN
+        self.transaction = [
+            Transaction(ServerState.LISTEN, ServerEvent.WAIT_PLAYER, ServerState.LISTEN, self.start_server()),
+            Transaction(ServerState.LISTEN, ServerEvent.START_MATCH, ServerState.CONNECTED, self.start_match()),
+            Transaction(ServerState.CONNECTED, ServerEvent.FINISH_MATCH, ServerState.REFRESH, self.reinit_server()),
+            Transaction(ServerState.REFRESH, ServerEvent.END_REINIT, ServerState.LISTEN, self.start_server())
+        ]
 
     def start_server(self):
 
@@ -80,5 +91,16 @@ class MainServer:
                         server.set_players(self.players)
                         server.start_game()
 
+    def manager_server_state(self, event):
+        for transaction in self.transaction:
+            if transaction.event == event and self.server_current_state == transaction.give_state:
+                self.server_current_state = transaction.next_state
+                transaction.action()
 
-MainServer().start_server()
+
+
+if __name__ == '__main__':
+    server = MainServer()
+    server.manager_server_state(ServerEvent.WAIT_PLAYER)
+
+
