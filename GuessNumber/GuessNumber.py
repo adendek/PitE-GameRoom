@@ -4,7 +4,7 @@
 import random
 import time
 import os
-from Player import Player
+from Utility.Player import Player
 
 player = Player()
 

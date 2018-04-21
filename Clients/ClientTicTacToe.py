@@ -1,13 +1,12 @@
 #ClientTicTacToe
 #Authors Mario Carricato & Marco Amato
 
-import socket
 import json
 import os
 from TicTacToe.Grid import Grid
 from Clients.FactoryClient import AbstractClient
-from Common import *
-import Common
+from Utility.Common import *
+from Utility import Common
 
 
 class ClientTicTacToe(AbstractClient):

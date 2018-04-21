@@ -2,11 +2,11 @@
 #Authors Mario Carricato & Marco Amato
 
 import socket  # Import socket module
-from Player import Player
+from Utility.Player import Player
 from Servers.ServerTicTacToe import ServerTicTacToe
 from Servers.ServerGuessNumber import ServerGuessNumber
-from Common import GamesType
-from Common import PlayerType
+from Utility.Common import GamesType
+from Utility.Common import PlayerType
 import time
 
 PORT = 9999  # Reserve a port for your service.

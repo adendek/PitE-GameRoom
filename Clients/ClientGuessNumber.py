@@ -1,11 +1,10 @@
 #ClientTicTacToe
 #Authors Mario Carricato & Marco Amato
 
-import socket
 import json
 import os
 import time
-from Common import *
+from Utility.Common import *
 
 from Clients.FactoryClient import AbstractClient
 

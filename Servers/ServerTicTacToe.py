@@ -5,9 +5,9 @@ from TicTacToe.Grid import Grid
 import time
 import json
 from Servers.FactoryServer import AbstractServer
-from Common import GamesType
-from Common import PlayerType
-from Common import MessageType
+from Utility.Common import GamesType
+from Utility.Common import PlayerType
+from Utility.Common import MessageType
 
 
 class ServerTicTacToe(AbstractServer):

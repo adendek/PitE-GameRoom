@@ -7,7 +7,7 @@ from TicTacToe.Tic_tac_toe_game import start_Tic_Tac_Toe_game
 from GuessNumber.GuessNumber import start_guess_the_number
 from Clients.ClientTicTacToe import ClientTicTacToe
 from Clients.ClientGuessNumber import ClientGuessNumber
-from Common import GamesType
+from Utility.Common import GamesType
 
 
 class MainClient:

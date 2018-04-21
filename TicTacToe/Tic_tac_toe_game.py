@@ -5,7 +5,7 @@ import time
 
 from TicTacToe.Grid import Grid
 from TicTacToe.Computer import Computer
-from Player import Player
+from Utility.Player import Player
 
 grid_obj = Grid()
 computer = Computer()

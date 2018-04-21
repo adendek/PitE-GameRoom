@@ -2,7 +2,7 @@
 # Authors Mario Carricato & Marco Amato
 
 import random
-import Common
+from Utility import Common
 
 
 class Computer:
@@ -40,30 +40,38 @@ class Computer:
             elif grid[i] == "X" and grid[i + 3] == "X" and grid[i + 6] == str(i + 6):
                 return i + 6
 
-        if grid[Common.DOWN_LEFT_CORNER] == self.type and grid[Common.CENTER] == self.type and grid[Common.UP_RIGHT_CORNER] == str(9):
+        if grid[Common.DOWN_LEFT_CORNER] == self.type and grid[Common.CENTER] == self.type and grid[
+            Common.UP_RIGHT_CORNER] == str(9):
             return 9
-        elif grid[Common.DOWN_LEFT_CORNER] == self.type and grid[Common.UP_RIGHT_CORNER] == self.type and grid[Common.CENTER] == str(5):
+        elif grid[Common.DOWN_LEFT_CORNER] == self.type and grid[Common.UP_RIGHT_CORNER] == self.type and grid[
+            Common.CENTER] == str(5):
             return 5
-        elif grid[Common.DOWN_LEFT_CORNER] == str(1) and grid[Common.CENTER] == self.type and grid[Common.UP_RIGHT_CORNER] == self.type:
+        elif grid[Common.DOWN_LEFT_CORNER] == str(1) and grid[Common.CENTER] == self.type and grid[
+            Common.UP_RIGHT_CORNER] == self.type:
             return 1
         if grid[Common.DOWN_LEFT_CORNER] == "X" and grid[Common.CENTER] == "X" and grid[Common.UP_RIGHT_CORNER] == str(9):
             return 9
         elif grid[Common.DOWN_LEFT_CORNER] == "X" and grid[Common.UP_RIGHT_CORNER] == "X" and grid[Common.CENTER] == str(5):
             return 5
-        elif grid[Common.DOWN_LEFT_CORNER] == str(1) and grid[Common.CENTER] == "X" and grid[Common.UP_RIGHT_CORNER] == "X":
+        elif grid[Common.DOWN_LEFT_CORNER] == str(1) and grid[Common.CENTER] == "X" and grid[
+            Common.UP_RIGHT_CORNER] == "X":
             return 1
 
-        if grid[Common.DOWN_RIGHT_CORNER] == self.type and grid[Common.CENTER] == self.type and grid[Common.UP_LEFT_CORNER] == str(7):
+        if grid[Common.DOWN_RIGHT_CORNER] == self.type and grid[Common.CENTER] == self.type and grid[
+            Common.UP_LEFT_CORNER] == str(7):
             return 7
-        elif grid[Common.DOWN_RIGHT_CORNER] == self.type and grid[Common.UP_LEFT_CORNER] == self.type and grid[Common.CENTER] == str(5):
+        elif grid[Common.DOWN_RIGHT_CORNER] == self.type and grid[Common.UP_LEFT_CORNER] == self.type and grid[
+            Common.CENTER] == str(5):
             return 5
-        elif grid[3] == str(Common.DOWN_RIGHT_CORNER) and grid[Common.CENTER] == self.type and grid[Common.UP_LEFT_CORNER] == self.type:
+        elif grid[3] == str(Common.DOWN_RIGHT_CORNER) and grid[Common.CENTER] == self.type and grid[
+            Common.UP_LEFT_CORNER] == self.type:
             return 3
         if grid[Common.DOWN_RIGHT_CORNER] == "X" and grid[Common.CENTER] == "X" and grid[Common.UP_LEFT_CORNER] == str(7):
             return 7
         elif grid[Common.DOWN_RIGHT_CORNER] == "X" and grid[Common.UP_LEFT_CORNER] == "X" and grid[Common.CENTER] == str(5):
             return 5
-        elif grid[Common.DOWN_RIGHT_CORNER] == str(3) and grid[Common.CENTER] == "X" and grid[Common.UP_LEFT_CORNER] == "X":
+        elif grid[Common.DOWN_RIGHT_CORNER] == str(3) and grid[Common.CENTER] == "X" and grid[
+            Common.UP_LEFT_CORNER] == "X":
             return 3
 
         if grid[Common.CENTER] == "5":
