@@ -110,3 +110,5 @@ class ServerGuessNumber(AbstractServer):
         else:
             self.send_request(you_lose_match(self.players[PlayerType.Player1.value].get_name()), PlayerType.Player1.value, MessageType.END_GAME.value)
             self.send_request(you_lose_match(self.players[PlayerType.Player2.value].get_name()), PlayerType.Player2.value, MessageType.END_GAME.value)
+
+        return True

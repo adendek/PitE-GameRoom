@@ -134,3 +134,5 @@ class ServerTicTacToe(AbstractServer):
             self.send_request(message_draw, PlayerType.Player1.value, MessageType.END_GAME.value)
             self.send_request(message_draw, PlayerType.Player2.value, MessageType.END_GAME.value)
 
+        return is_game_ended
+
